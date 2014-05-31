@@ -9,25 +9,32 @@
     <input type='text' id='nameInput' placeholder='Name'>
     <input type='text' id='messageInput' placeholder='Message'>
     <script>
-      var myDataRef = new Firebase('https://ctq127e1k1b.firebaseio-demo.com/');
+      var myDataRef = new Firebase('https://itya99vytzc.firebaseio-demo.com/  ');
       $('#messageInput').keypress(function (e) {
         if (e.keyCode == 13) {
-          var name = $('#nameInput').val();
+        	var name = $('#nameInput').val();
           var text = $('#messageInput').val();
-          myDataRef.push({name: name, text: text});
-          $('#messageInput').val('');
+        var listRef = new Firebase('https://SampleChat.firebaseIO-demo.com/message_list');
+var msgRef = listRef.push();
+msgRef.set({user_id: name, text: text});
+  myDataRef.push({name: name, text: text});
+       //   $('#messageInput').val('');
         }
       });
       myDataRef.on('child_added', function(snapshot) {
         var message = snapshot.val();
         displayChatMessage(message.name, message.text);
       });
-      if ()
+     var helped=true;
+      if (helped== true){
+        name.remove(null);
+
+      }
+
       function displayChatMessage(name, text) {
-        $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
-        <button type="button">Delete!</button>
+        $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));messagesDiv
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
-    
+      };
     </script>
   </body>
 </html>

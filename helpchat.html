@@ -8,13 +8,15 @@
     <div id='messagesDiv'></div>
     <input type='text' id='nameInput' placeholder='Name'>
     <input type='text' id='messageInput' placeholder='Message'>
+    <button type='button' id='remove'>Delete</button>
     <script>
-      var myDataRef = new Firebase('https://ctq127e1k1b.firebaseio-demo.com/');
+      var myDataRef = new Firebase('https://z9izqpuzvwu.firebaseio-demo.com/');
       $('#messageInput').keypress(function (e) {
         if (e.keyCode == 13) {
           var name = $('#nameInput').val();
           var text = $('#messageInput').val();
-          myDataRef.push({name: name, text: text});
+          //var remove = $('#removeInput').val();
+          myDataRef.push({name: name, text: text);
           $('#messageInput').val('');
         }
       });
@@ -22,12 +24,12 @@
         var message = snapshot.val();
         displayChatMessage(message.name, message.text);
       });
-      if ()
       function displayChatMessage(name, text) {
         $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
-        <button type="button">Delete!</button>
+       // $('button').text(" ").prepend($('<em/>').text("Delete"));
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
-    
+      };
     </script>
   </body>
 </html>
+
